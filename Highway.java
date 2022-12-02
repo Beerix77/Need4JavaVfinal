@@ -49,7 +49,7 @@ public class Highway
                 }
             }
         }
-        //check if remaining non-visible highway length is 10 or less.
+        //Display remaining highway if distance to end is 10 or less.
         else if (road.get(1).size() <= 10)
         {
             for (ArrayList<String> i : road)

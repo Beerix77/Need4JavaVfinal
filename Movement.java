@@ -47,7 +47,7 @@ public class Movement
         MAXIMUM_FUEL = maximumFuel;
         MAXIMUM_DAMAGE = maximumDamage;
         currentFuel = MAXIMUM_FUEL;
-        currentDamage = MAXIMUM_DAMAGE;
+        currentDamage = 0; //todo: currentDamage = MAXIMUM_DAMAGE;
         distance = 0;
     }
 
@@ -431,18 +431,23 @@ public class Movement
 
         // Calculate DAMAGE sustained:
         int damage = (block * 20) + (spikes * 45) + (manhole * 60);
-        if (damage >= currentDamage)
+        currentDamage += damage;
+
+        if (currentDamage >= MAXIMUM_DAMAGE)   //todo: damage >= currentDamage
         {
             System.out.println("Vehicle has been Destroyed!!!...");
-            currentDamage = 0;
+            currentDamage = MAXIMUM_DAMAGE; //todo: currentDamage = 0;
         }
+        /*
         else
         {
-            currentDamage = currentDamage - damage;
+            currentDamage += damage; //todo:  currentDamage = currentDamage - damage;
         }
+
+         */
         System.out.print("Current FUEL remaining: " + currentFuel + " of ");
         System.out.println(this.MAXIMUM_FUEL);
-        System.out.print("Current DAMAGE remaining: " + currentDamage +
+        System.out.print("Current DAMAGE sustained: " + currentDamage +     //todo: "Current DAMAGE remaining: "
                 " of ");
         System.out.println(this.MAXIMUM_DAMAGE);
         System.out.print("Current Distance Travelled: " + distance);

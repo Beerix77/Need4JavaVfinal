@@ -1,3 +1,4 @@
 Motorcycle,4,100,30
 Car,3,120,50
 Garbage Truck,2,150,100
+Tank,2,50,200

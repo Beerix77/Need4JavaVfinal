@@ -32,11 +32,11 @@ public class Game
         System.out.print("Length of Highway: ");
         System.out.println(adjustment.getHighwayLength());
 
-        System.out.print("Current MAX FUEL level due to Difficulty ");
+        System.out.print("MAX FUEL level due to Difficulty ");
         System.out.print(player.getDifficultyLevel() + " is: ");
         System.out.println((int) adjustment.getNewFuel());
 
-        System.out.print("Current MAX DAMAGE sustainable to Vehicle ");
+        System.out.print("MAX DAMAGE sustainable to Vehicle ");
         System.out.print(player.getVehicleSelect().getVehicleType() + " is: ");
         System.out.println(player.getVehicleSelect().getMaxDamage());
 
@@ -62,17 +62,17 @@ public class Game
                 move.movement(highway.playerLocation(obstacles.getRoad()),
                         obstacles.getRoad());
             }
-            while (move.getCurrentFuel() > 0 && move.getCurrentDamage() > 0);
+            while (move.getCurrentFuel() > 0 && move.getCurrentDamage() < move.MAXIMUM_DAMAGE);   //todo: && move.getCurrentDamage() > 0);
             System.out.println("GAME OVER!!! ... YOU LOSE!");
         }
         catch (IndexOutOfBoundsException e)
         {
             System.out.print("CONGRATULATIONS " + player.getName() + "!! ");
             System.out.println("YOU HAVE ESCAPED!... END OF HIGHWAY REACHED!");
-            System.out.print("FUEL remaining: " + move.getCurrentFuel()
+            System.out.print("Total FUEL remaining: " + move.getCurrentFuel()
                     + " of ");
             System.out.println(move.MAXIMUM_FUEL);
-            System.out.print("DAMAGE remaining: " + move.getCurrentDamage()
+            System.out.print("Total DAMAGE accumulated: " + move.getCurrentDamage()
                     + " of ");
             System.out.println(move.MAXIMUM_DAMAGE);
             System.out.print("Distance Travelled: " + move.getDistance());
