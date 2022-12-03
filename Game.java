@@ -31,11 +31,9 @@ public class Game
         adjustment.highwayLength(player.getDifficultyLevel());
         System.out.print("Length of Highway: ");
         System.out.println(adjustment.getHighwayLength());
-
         System.out.print("MAX FUEL level due to Difficulty ");
         System.out.print(player.getDifficultyLevel() + " is: ");
         System.out.println((int) adjustment.getNewFuel());
-
         System.out.print("MAX DAMAGE sustainable to Vehicle ");
         System.out.print(player.getVehicleSelect().getVehicleType() + " is: ");
         System.out.println(player.getVehicleSelect().getMaxDamage());
@@ -47,20 +45,16 @@ public class Game
         Highway highway = new Highway();
         highway.addPlayerStart(obstacles.getRoad());
 
-        Movement move = new Movement(player.getVehicleSelect().getBoostSpeed(),
-                (int) adjustment.getNewFuel(),
-                player.getVehicleSelect().getMaxDamage());
+        Movement move = new Movement(player.getVehicleSelect().getBoostSpeed(), (int) adjustment.getNewFuel(), player.getVehicleSelect().getMaxDamage());
         highway.displayHighway(obstacles.getRoad());
-        move.movement(highway.playerLocation(obstacles.getRoad()),
-                obstacles.getRoad());
+        move.movement(highway.playerLocation(obstacles.getRoad()), obstacles.getRoad());
 
         try
         {
             do
             {
                 highway.displayHighway(obstacles.getRoad());
-                move.movement(highway.playerLocation(obstacles.getRoad()),
-                        obstacles.getRoad());
+                move.movement(highway.playerLocation(obstacles.getRoad()), obstacles.getRoad());
             }
             while (move.getCurrentFuel() > 0 && move.getCurrentDamage() < move.MAXIMUM_DAMAGE);   //todo: && move.getCurrentDamage() > 0);
             System.out.println("GAME OVER!!! ... YOU LOSE!");
